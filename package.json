@@ -1,0 +1,35 @@
+{
+  "name": "test3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 8081 -c-1",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanminkwan/test3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanminkwan/test3/issues"
+  },
+  "homepage": "https://github.com/tanminkwan/test3#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "http-server": "^14.1.1",
+    "jest": "^29.7.0",
+    "jest-puppeteer": "^10.0.1",
+    "puppeteer": "^22.13.1",
+    "three": "^0.166.1"
+  },
+  "jest": {
+    "preset": "jest-puppeteer"
+  }
+}
