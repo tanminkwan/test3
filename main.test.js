@@ -9,15 +9,21 @@ describe('Three.js Scene', () => {
     await page.goto('http://localhost:8081/index.html', { waitUntil: 'load' });
   });
 
-  it('should have a cube in the scene', async () => {
+  it('should have a cube and a light in the scene', async () => {
     const sceneJSON = await page.evaluate(async () => {
       const { main } = await import('/main.js');
       const scene = main();
       return scene.toJSON();
     });
-    // there is one object in the scene (the cube)
-    expect(sceneJSON.object.children.length).toBe(1);
-    // the object is a Mesh
-    expect(sceneJSON.object.children[0].type).toBe('Mesh');
+    // there are two objects in the scene (the light and the cube)
+    expect(sceneJSON.object.children.length).toBe(2);
+
+    // check for the light
+    const light = sceneJSON.object.children.find(child => child.type === 'DirectionalLight');
+    expect(light).toBeDefined();
+    
+    // check for the cube
+    const cube = sceneJSON.object.children.find(child => child.type === 'Mesh');
+    expect(cube).toBeDefined();
   });
 }); 
